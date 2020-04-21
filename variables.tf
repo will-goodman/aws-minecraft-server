@@ -38,26 +38,26 @@ variable "second_private_cidr_range" {
 //S3
 variable "bucket_prefix" {
   description = "Bucket policy to apply to the bucket"
-  default = "minecraft-server-"
+  default     = "minecraft-server-"
 }
 
 variable "force_destroy" {
   description = "Whether or not to forceably destroy the bucket's contents on a terraform destroy. Default false"
-  default = false
+  default     = false
 }
 
 variable "versioning" {
   description = "Whether or not to enable bucket versioning. Defaults to false"
-  default = false
+  default     = false
 }
 
 variable "region" {
-    description = "Region to create the bucket in"
-    default = "eu-west-2"
+  description = "Region to create the bucket in"
+  default     = "eu-west-2"
 }
 
 //EC2
 variable "ssh_ip_address" {
   description = "IP address allowed to SSH into the EC2 instance."
-  default = ""
+  default     = ""
 }
