@@ -59,5 +59,13 @@ variable "region" {
 //EC2
 variable "ssh_ip_address" {
   description = "IP address allowed to SSH into the EC2 instance."
-  default     = ""
+}
+
+variable "ssh_public_key" {
+  description = "Public key to be used when using SSH to connect to the EC2 instance."
+}
+
+variable "instance_type" {
+  description = "Instance type of the EC2. Default t2.micro as it is part of the free tier. https://aws.amazon.com/ec2/instance-types/"
+  default     = "t2.micro"
 }

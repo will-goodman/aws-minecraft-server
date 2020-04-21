@@ -61,9 +61,11 @@ resource "aws_instance" "server" {
   instance_type = var.instance_type
 
   iam_instance_profile = aws_iam_instance_profile.server.name
+  key_name             = "minecraft-server-key"
 
-  vpc_security_group_ids = [aws_security_group.server.id]
-  subnet_id              = element(module.vpc.public_subnets, 0)
+  vpc_security_group_ids      = [aws_security_group.server.id]
+  subnet_id                   = element(module.vpc.public_subnets, 0)
+  associate_public_ip_address = true
 
   tags = {
     Name = "MinecraftServer"
@@ -112,6 +114,11 @@ resource "aws_security_group" "server" {
     cidr_blocks = [var.public_cidr_range, var.second_public_cidr_range]
   }
 
+}
+
+resource "aws_key_pair" "server" {
+  key_name   = "minecraft-server-key"
+  public_key = var.ssh_public_key
 }
 
 resource "aws_iam_instance_profile" "server" {
