@@ -1,0 +1,5 @@
+
+phases:
+  fmt:
+    commands:
+      - terraform fmt --recursive --check
